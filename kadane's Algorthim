@@ -1,0 +1,29 @@
+//kadane's Algorthim
+#include<stdio.h>
+int sub(int *a,int n);
+int main()
+{
+    int a[10],n;
+    scanf("%d",&n);
+    for(int i=1;i<=n;i++)
+    {
+        scanf("%d",&a[i]);
+    }
+    printf("%d",sub(a,n));
+    return 0;
+}
+int sub(int a[],int n)
+{
+    int s=0,m=0,k;
+    for(k=1;k<=n;k++)
+    {
+        m=m+a[k];
+        if(m<0)
+        m=0;
+        else if (s<m)
+        s=m;
+        else
+        continue;
+    }
+    return s;
+}
