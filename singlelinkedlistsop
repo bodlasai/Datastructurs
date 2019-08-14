@@ -1,0 +1,143 @@
+#include<stdio.h>
+struct node
+{
+    int data;
+    struct node *link;
+};
+struct node* root = NULL;
+void append()
+{
+    struct node *temp;
+    temp=(struct node*)malloc(sizeof(struct node));
+    scanf("%d",&temp->data);
+    temp->link=NULL;
+    if(root == NULL)
+    {
+        root=temp;
+    }
+    else
+    {
+        struct node *p;
+        p=root;
+        while(p->link !=NULL)
+        {
+            p=p->link;
+        }
+        p->link=temp;
+    }
+}
+void display(int loc)
+{
+    int c;
+    struct node *p;
+    p=root;
+    if(p == NULL)
+    {
+        printf("empty");
+    }
+    else
+    {
+        
+    while( p != NULL)
+    {
+        c++;
+        printf("%d",p->data);
+        p=p->link;
+    }
+     printf(" \n length %d",c);
+    }
+   addatspecificnode(loc,c);
+}
+void nthnode(int n)
+{
+    struct node *p;
+    p=root;
+    int i=1;
+    
+    while(p!=NULL)
+    {
+        if(i == n)
+        {
+            printf("\nelement at index  %d is ,%d",i,p->data);
+            break;
+        }
+        i++;
+        p=p->link;
+        
+    }
+    
+}
+void addatbegin()
+{
+    struct node *temp;
+    temp=(struct node*)malloc(sizeof(struct node));
+    scanf("%d",&temp->data);
+    temp->link=NULL;
+    if(root == NULL)
+    {
+        temp=root;
+    }
+    else
+    {
+        temp->link=root;
+        root=temp;
+    }
+}
+void addatspecificnode(int loc,int length)
+{
+    int i=1;
+    struct node *temp;
+    temp=(struct node*)malloc(sizeof(struct node));
+    scanf("%d",&temp->data);
+    temp->link=NULL;
+    if(loc > length)
+    {
+        printf("not possiable");
+    }
+    else
+    {
+        struct node *p;
+        p=root;
+        while(i<loc)
+        {
+            p=p->link;
+            i++;
+        }
+        temp=p;
+        p->link=temp;
+    }
+}
+void displays()
+{
+    int c;
+    struct node *p;
+    p=root;
+    if(p == NULL)
+    {
+        printf("empty");
+    }
+    else
+    {
+        
+    while( p != NULL)
+    {
+        c++;
+        printf("%d",p->data);
+        p=p->link;
+    }
+     printf(" \n length %d",c);
+    }
+}
+int main()
+{
+
+    int i,n=2,loc=4;
+    for(i=1;i<=5;i++)
+    {
+       append();
+    }
+     display(loc);
+     nthnode(n);
+     addatbegin();
+     displays();
+}
